@@ -1,5 +1,6 @@
 package PrintedEdition;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class PrintedEdition{
@@ -14,7 +15,7 @@ public abstract class PrintedEdition{
     @Override
     public String toString() {
         String result;
-        result = "Title: " + title + "Date: " + date;
+        result = "Title:" + title + " Date:" + (new SimpleDateFormat("yyyy-MM-dd")).format(date);
         return result;
     }
 }

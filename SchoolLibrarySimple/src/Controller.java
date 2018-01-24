@@ -8,9 +8,10 @@ public class Controller {
 
     public static void main(String[] args) {
         Library library = new Library();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
-            date = (new SimpleDateFormat("yyyy-MM-dd")).parse("2011-11-11");
+            date = dateFormat.parse("2018-01-24");
         } catch (ParseException e) {
             e.printStackTrace();
         }
