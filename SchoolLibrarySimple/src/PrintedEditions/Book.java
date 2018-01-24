@@ -4,7 +4,7 @@ public class Book extends Edition {
     private String author;
     private String publishingHouse;
 
-    Book(String title, String author, String publishingHouse) {
+    public Book(String title, String author, String publishingHouse) {
         super(title);
         this.author = author;
         this.publishingHouse = publishingHouse;
