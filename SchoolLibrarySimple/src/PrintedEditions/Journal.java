@@ -11,8 +11,8 @@ public class Journal extends Edition {
 
     @Override
     public String toString() {
-        String result = super.toString();
-        result += " Number of pages:" + numberOfPages;
-        return result;
+        String journalInfo = super.toString();
+        journalInfo += " Number of pages:" + numberOfPages;
+        return journalInfo;
     }
 }

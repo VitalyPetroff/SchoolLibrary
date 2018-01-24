@@ -9,8 +9,7 @@ public abstract class Edition{
 
     @Override
     public String toString() {
-        String result;
-        result = "Title:" + title;
-        return result;
+        String editionInfo = "Title:" + title;
+        return editionInfo;
     }
 }

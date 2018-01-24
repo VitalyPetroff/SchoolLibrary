@@ -12,8 +12,8 @@ public class Book extends Edition {
 
     @Override
     public String toString() {
-        String result = super.toString();
-        result += " Author:" + author + " Publishing House:" + publishingHouse;
-        return result;
+        String bookInfo = super.toString();
+        bookInfo += " Author:" + author + " Publishing House:" + publishingHouse;
+        return bookInfo;
     }
 }
