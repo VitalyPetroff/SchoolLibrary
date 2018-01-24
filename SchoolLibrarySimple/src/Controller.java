@@ -1,4 +1,4 @@
-import PrintedEdition.Article;
+import PrintedEditions.Article;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ public class Controller {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Article article = new Article("Title", date, "Autor", "Topic");
+        Article article = new Article("Title of article", date, "Autor", "Topic");
 
         System.out.println(article.toString());
     }
