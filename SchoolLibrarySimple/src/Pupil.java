@@ -1,8 +1,10 @@
+import PrintedEdition.PrintedEdition;
+
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 
 public class Pupil {
     private String name;
-    private Calendar dateOfBirth;
+    private Date dateOfBirth;
     private ArrayList<PrintedEdition> listOfReadingBooks;
 }
