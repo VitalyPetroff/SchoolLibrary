@@ -7,7 +7,7 @@ import java.util.Date;
 public class Pupil {
     private String name;
     private Date dateOfBirth;
-    private ArrayList<Edition> readingEditions = new ArrayList<>();
+    private ArrayList<Edition> listOfEditions = new ArrayList<>();
 
     public Pupil(String name, Date dateOfBirth) {
         this.name = name;
@@ -15,19 +15,19 @@ public class Pupil {
     }
 
     public void readingOfEdition(Edition publication) {
-        readingEditions.add(publication);
+        listOfEditions.add(publication);
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDate() {
+    public String getDateOfBirth() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(dateOfBirth);
     }
 
-    public ArrayList<Edition> getReadingEditions() {
-        return readingEditions;
+    public ArrayList<Edition> getListOfEditions() {
+        return listOfEditions;
     }
 }
