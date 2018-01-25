@@ -18,6 +18,15 @@ public class Pupil {
         listOfEditions.add(publication);
     }
 
+    @Override
+    public String toString() {
+        return "Pupil{" +
+                "name='" + name + '\'' +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", listOfEditions=" + listOfEditions +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

@@ -17,5 +17,11 @@ public class Article extends Edition {
         return articleInfo;
     }
 
+    public String getAuthor() {
+        return author;
+    }
 
+    public String getTopic() {
+        return topic;
+    }
 }

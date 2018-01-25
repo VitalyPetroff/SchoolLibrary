@@ -18,6 +18,9 @@ public class AppMain {
 
         addPupils(service);
         service.printPupils();
+
+        reading(service);
+        service.printPupils();
     }
 
     public static void addEditions(LibraryService service) {
@@ -51,6 +54,26 @@ public class AppMain {
     }
 
     public static void reading(LibraryService service){
-
+        service.readingOfEdition("Nick", "BOOK_1");
+        service.readingOfEdition("Nick", "BOOK_4");
+        service.readingOfEdition("Bob", "ARTICLE_2");
+        service.readingOfEdition("Bob", "JOURNAL_1");
+        service.readingOfEdition("Bob", "NEWSPAPER_3");
+        service.readingOfEdition("Bob", "BOOK_1");
+        service.readingOfEdition("John", "ARTICLE_1");
+        service.readingOfEdition("John", "NEWSPAPER_3");
+        service.readingOfEdition("John", "NEWSPAPER_2");
+        service.readingOfEdition("Jake", "JOURNAL_1");
+        service.readingOfEdition("Nicole", "JOURNAL_2");
+        service.readingOfEdition("Nicole", "BOOK_1");
+        service.readingOfEdition("Nicole", "JOURNAL_2");
+        service.readingOfEdition("Nicole", "NEWSPAPER_1");
+        service.readingOfEdition("Nicole", "BOOK_1");
+        service.readingOfEdition("Sam", "BOOK_3");
+        service.readingOfEdition("Ann", "JOURNAL_1");
+        service.readingOfEdition("Ann", "JOURNAL_4");
+        service.readingOfEdition("Ann", "BOOK_1");
+        service.readingOfEdition("Ann", "ARTICLE_2");
+        service.readingOfEdition("Ann", "BOOK_1");
     }
 }

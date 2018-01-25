@@ -6,46 +6,55 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class LibraryService {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(LibraryService.class);
-    private LibraryDao dao = new LibraryDao("Library.json");
+    private Library library = new Library();
 
     public void addEdition(Edition edition) {
-
-        dao.saveEdition(edition);
+        library.listOfEditions.add(edition);
     }
 
     public void printEditions() {
-        ArrayList<Edition> listOfEditions = dao.getAllEditions();
-        for (Edition edition : listOfEditions) {
+        for (Edition edition : library.listOfEditions) {
             LOGGER.info(edition.toString());
         }
     }
 
     public void addPupil(Pupil pupil) {
-        dao.savePupil(pupil);
+        library.listOfPupils.add(pupil);
     }
 
     public void printPupils() {
-        ArrayList<Pupil> listOfPupils = dao.getAllPupils();
-        for (Pupil pupil : listOfPupils) {
+        for (Pupil pupil : library.listOfPupils) {
             LOGGER.info(pupil.toString());
         }
     }
 
-    public void readingEdition(String name, String title) {
-        Pupil pupil = dao.findByName(name);
-        Edition edition = dao.findByTitle(title);
+    public void readingOfEdition(String name, String title) {
+        Pupil pupil = findByName(name);
+        Edition edition = findByTitle(title);
         pupil.readingOfEdition(edition);
-        dao.savePupil(pupil);
-    }
-   /*
-    public void sortPupilsByEditions() {
-        Collections.sort(pupils, new PupilEditionsComparator());
     }
 
-    public void printPupils() {
-        for (Pupil pupil : pupils) {
-            LOGGER.info(pupil.getName());
+    public Edition findByTitle(String title) {
+        Edition result = null;
+        for (Edition ed : library.listOfEditions) {
+            if (ed.getTitle().equals(title)) {
+                result = ed;
+            }
         }
-    }*/
+        return result;
+    }
+
+    public Pupil findByName(String name) {
+        Pupil result = null;
+        for (Pupil pupil : library.listOfPupils) {
+            if (pupil.getName().equals(name)) {
+                result = pupil;
+            }
+        }
+        return result;
+    }
+
+    public void sorting()
 }
