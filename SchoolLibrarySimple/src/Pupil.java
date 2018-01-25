@@ -20,20 +20,17 @@ public class Pupil {
 
     @Override
     public String toString() {
-        return "Pupil{" +
-                "name='" + name + '\'' +
-                ", dateOfBirth=" + getDateOfBirth() +
-                ", listOfEditions=" + listOfEditions +
-                '}';
+        return "name: '" + name + '\'' +
+                ", dateOfBirth: " + new SimpleDateFormat("yyyy").format(dateOfBirth) +
+                ", listOfEditions: " + listOfEditions.size();
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDateOfBirth() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(dateOfBirth);
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public ArrayList<Edition> getListOfEditions() {

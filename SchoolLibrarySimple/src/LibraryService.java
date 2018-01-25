@@ -2,8 +2,9 @@ import PrintedEditions.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class LibraryService {
 
@@ -15,6 +16,7 @@ public class LibraryService {
     }
 
     public void printEditions() {
+        LOGGER.info("FIRST REPORT. THE LIST OF AVAILABLE FOR READING:");
         for (Edition edition : library.listOfEditions) {
             LOGGER.info(edition.toString());
         }
@@ -56,5 +58,34 @@ public class LibraryService {
         return result;
     }
 
-    public void sorting()
+    public void secondReport(){
+        PupilEditionsComparator comparator = new PupilEditionsComparator();
+        library.listOfPupils.sort(comparator);
+        Collections.reverse(library.listOfPupils);
+        LOGGER.info("SECOND REPORT");
+        for (Pupil pupil : library.listOfPupils) {
+            if (pupil.getListOfEditions().size() > 1) {
+                LOGGER.info(pupil.getName() + ":" + pupil.getListOfEditions().size());
+            }
+        }
+    }
+
+    public void thirdReport(){
+        Comparator<Pupil> comparator = new PupilAgeComparator().thenComparing(new PupilEditionsComparatorInverse());
+        library.listOfPupils.sort(comparator);
+        Collections.reverse(library.listOfPupils);
+        printPupils();
+        LOGGER.info("THIRD REPORT");
+        String result;
+        for (Pupil pupil : library.listOfPupils) {
+            if (pupil.getListOfEditions().size() <= 2) {
+                result = new SimpleDateFormat("yyyy").format(pupil.getDateOfBirth()) + ":" +
+                        pupil.getListOfEditions().size();
+                if (pupil.getListOfEditions().size() == 2) {
+                    result = pupil.getName() + ", " + result;
+                }
+                LOGGER.info(result);
+            }
+        }
+    }
 }

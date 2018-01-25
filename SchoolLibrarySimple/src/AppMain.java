@@ -14,13 +14,11 @@ public class AppMain {
         LibraryService service = new LibraryService();
 
         addEditions(service);
-        service.printEditions();
-
         addPupils(service);
-        service.printPupils();
-
         reading(service);
-        service.printPupils();
+//        service.printPupils();
+        service.secondReport();
+        service.thirdReport();
     }
 
     public static void addEditions(LibraryService service) {
@@ -38,16 +36,16 @@ public class AppMain {
     }
 
     public static void addPupils(LibraryService service) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
         try {
-            service.addPupil(new Pupil("Nick", dateFormat.parse("2005-04-13")));
-            service.addPupil(new Pupil("Bob", dateFormat.parse("2005-07-17")));
-            service.addPupil(new Pupil("John", dateFormat.parse("2004-12-08")));
-            service.addPupil(new Pupil("Jake", dateFormat.parse("2005-02-24")));
-            service.addPupil(new Pupil("Nicole", dateFormat.parse("2006-01-03")));
-            service.addPupil(new Pupil("Sam", dateFormat.parse("2005-09-01")));
-            service.addPupil(new Pupil("Ann", dateFormat.parse("2005-06-22")));
-            service.addPupil(new Pupil("Eva", dateFormat.parse("2004-12-12")));
+            service.addPupil(new Pupil("Nick", dateFormat.parse("2005")));
+            service.addPupil(new Pupil("Bob", dateFormat.parse("2005")));
+            service.addPupil(new Pupil("John", dateFormat.parse("2004")));
+            service.addPupil(new Pupil("Jake", dateFormat.parse("2005")));
+            service.addPupil(new Pupil("Nicole", dateFormat.parse("2003")));
+            service.addPupil(new Pupil("Sam", dateFormat.parse("2003")));
+            service.addPupil(new Pupil("Ann", dateFormat.parse("2005")));
+            service.addPupil(new Pupil("Eva", dateFormat.parse("2004")));
         } catch (ParseException e) {
             LOGGER.error(e.getMessage(), e);
         }
@@ -62,18 +60,14 @@ public class AppMain {
         service.readingOfEdition("Bob", "BOOK_1");
         service.readingOfEdition("John", "ARTICLE_1");
         service.readingOfEdition("John", "NEWSPAPER_3");
-        service.readingOfEdition("John", "NEWSPAPER_2");
         service.readingOfEdition("Jake", "JOURNAL_1");
-        service.readingOfEdition("Nicole", "JOURNAL_2");
         service.readingOfEdition("Nicole", "BOOK_1");
         service.readingOfEdition("Nicole", "JOURNAL_2");
         service.readingOfEdition("Nicole", "NEWSPAPER_1");
-        service.readingOfEdition("Nicole", "BOOK_1");
         service.readingOfEdition("Sam", "BOOK_3");
         service.readingOfEdition("Ann", "JOURNAL_1");
         service.readingOfEdition("Ann", "JOURNAL_4");
         service.readingOfEdition("Ann", "BOOK_1");
         service.readingOfEdition("Ann", "ARTICLE_2");
-        service.readingOfEdition("Ann", "BOOK_1");
     }
 }
