@@ -13,7 +13,7 @@ public class Article extends Edition {
     @Override
     public String toString() {
         String articleInfo = super.toString();
-        articleInfo += " Author:" + author + " Topic:" + topic;
+        articleInfo += " Author: " + author + " Topic: " + topic;
         return articleInfo;
     }
 

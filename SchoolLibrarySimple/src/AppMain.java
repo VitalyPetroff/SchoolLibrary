@@ -16,7 +16,8 @@ public class AppMain {
         addEditions(service);
         addPupils(service);
         reading(service);
-//        service.printPupils();
+
+        service.firstReport();
         service.secondReport();
         service.thirdReport();
     }
@@ -44,7 +45,7 @@ public class AppMain {
             service.addPupil(new Pupil("Jake", dateFormat.parse("2005")));
             service.addPupil(new Pupil("Nicole", dateFormat.parse("2003")));
             service.addPupil(new Pupil("Sam", dateFormat.parse("2003")));
-            service.addPupil(new Pupil("Ann", dateFormat.parse("2005")));
+            service.addPupil(new Pupil("Ann", dateFormat.parse("2006")));
             service.addPupil(new Pupil("Eva", dateFormat.parse("2004")));
         } catch (ParseException e) {
             LOGGER.error(e.getMessage(), e);
@@ -69,5 +70,7 @@ public class AppMain {
         service.readingOfEdition("Ann", "JOURNAL_4");
         service.readingOfEdition("Ann", "BOOK_1");
         service.readingOfEdition("Ann", "ARTICLE_2");
+        service.readingOfEdition("Eva", "BOOK_4");
+        service.readingOfEdition("Eva", "JOURNAL_2");
     }
 }

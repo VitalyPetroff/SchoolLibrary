@@ -15,13 +15,6 @@ public class LibraryService {
         library.listOfEditions.add(edition);
     }
 
-    public void printEditions() {
-        LOGGER.info("FIRST REPORT. THE LIST OF AVAILABLE FOR READING:");
-        for (Edition edition : library.listOfEditions) {
-            LOGGER.info(edition.toString());
-        }
-    }
-
     public void addPupil(Pupil pupil) {
         library.listOfPupils.add(pupil);
     }
@@ -58,11 +51,18 @@ public class LibraryService {
         return result;
     }
 
+    public void firstReport() {
+        LOGGER.info("===FIRST REPORT. THE LIST OF AVAILABLE FOR READING===:");
+        for (Edition edition : library.listOfEditions) {
+            LOGGER.info(edition.toString());
+        }
+    }
+
     public void secondReport(){
         PupilEditionsComparator comparator = new PupilEditionsComparator();
         library.listOfPupils.sort(comparator);
         Collections.reverse(library.listOfPupils);
-        LOGGER.info("SECOND REPORT");
+        LOGGER.info("===SECOND REPORT. PUPILS WHO HAVE READ MORE THAN 1 BOOK===");
         for (Pupil pupil : library.listOfPupils) {
             if (pupil.getListOfEditions().size() > 1) {
                 LOGGER.info(pupil.getName() + ":" + pupil.getListOfEditions().size());
@@ -75,7 +75,7 @@ public class LibraryService {
         library.listOfPupils.sort(comparator);
         Collections.reverse(library.listOfPupils);
         printPupils();
-        LOGGER.info("THIRD REPORT");
+        LOGGER.info("===THIRD REPORT. PUPILS WHO HAVE READ LESS THAN OR EQUAL TO 2 BOOKS===");
         String result;
         for (Pupil pupil : library.listOfPupils) {
             if (pupil.getListOfEditions().size() <= 2) {

@@ -13,7 +13,7 @@ public class Book extends Edition {
     @Override
     public String toString() {
         String bookInfo = super.toString();
-        bookInfo += " Author:" + author + " Publishing House:" + publishingHouse;
+        bookInfo += " Author: " + author + " Publishing House: " + publishingHouse;
         return bookInfo;
     }
 

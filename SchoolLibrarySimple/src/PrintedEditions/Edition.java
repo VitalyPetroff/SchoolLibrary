@@ -9,7 +9,7 @@ public class Edition{
 
     @Override
     public String toString() {
-        return "Title:" + title;
+        return "Title: " + title;
     }
 
     public String getTitle() {

@@ -11,7 +11,7 @@ public class Newspaper extends Edition {
     @Override
     public String toString() {
         String newspaperInfo = super.toString();
-        newspaperInfo += " Price:" + price;
+        newspaperInfo += " Price: " + price;
         return newspaperInfo;
     }
 
