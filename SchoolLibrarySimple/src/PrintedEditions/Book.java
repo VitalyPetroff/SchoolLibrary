@@ -16,4 +16,12 @@ public class Book extends Edition {
         bookInfo += " Author:" + author + " Publishing House:" + publishingHouse;
         return bookInfo;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getPublishingHouse() {
+        return publishingHouse;
+    }
 }

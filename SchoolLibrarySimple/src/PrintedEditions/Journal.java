@@ -15,4 +15,8 @@ public class Journal extends Edition {
         journalInfo += " Number of pages:" + numberOfPages;
         return journalInfo;
     }
+
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
 }

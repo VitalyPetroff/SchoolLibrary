@@ -18,10 +18,16 @@ public class Pupil {
         readingEditions.add(publication);
     }
 
-    @Override
-    public String toString() {
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String pupilInfo = "Name: " + name + " Date of Birth:" + dateFormat.format(dateOfBirth);
-        return pupilInfo;
+        return dateFormat.format(dateOfBirth);
+    }
+
+    public ArrayList<Edition> getReadingEditions() {
+        return readingEditions;
     }
 }

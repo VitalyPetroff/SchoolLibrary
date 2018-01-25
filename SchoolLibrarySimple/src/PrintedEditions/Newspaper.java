@@ -14,4 +14,8 @@ public class Newspaper extends Edition {
         newspaperInfo += " Price:" + price;
         return newspaperInfo;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }

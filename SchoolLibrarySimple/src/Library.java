@@ -14,12 +14,4 @@ public class Library {
     public void addPupil(Pupil pupil){
         pupils.add(pupil);
     }
-
-    public ArrayList<Pupil> getPupils() {
-        return pupils;
-    }
-
-    public ArrayList<Edition> getListOfEditions() {
-        return editions;
-    }
 }

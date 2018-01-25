@@ -16,4 +16,6 @@ public class Article extends Edition {
         articleInfo += " Author:" + author + " Topic:" + topic;
         return articleInfo;
     }
+
+
 }
