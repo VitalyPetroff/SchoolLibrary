@@ -34,9 +34,13 @@ public class LibraryService {
         pupil.readingOfEdition(edition);
     }
 
-    public void readingAll(String[] names, String[] editions) {
-        for (int index = 0; index < names.length; index++) {
-            readingOfEdition(names[index], editions[index]);
+    public void readingAll(String[] names, String[][] editions) {
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < editions[i].length; j++) {
+                if (!editions[i][j].isEmpty()) {
+                    readingOfEdition(names[i], editions[i][j]);
+                }
+            }
         }
     }
 

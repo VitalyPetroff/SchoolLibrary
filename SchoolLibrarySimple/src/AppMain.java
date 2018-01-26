@@ -16,11 +16,16 @@ public class AppMain {
     public static void main(String[] args) {
         service.addAllEditions(addEditions());
         service.addAllPupils(addPupils());
-        String[] names = {"Nick", "Nick", "Bob", "Bob", "Bob", "Bob", "John", "John", "Jake",
-                "Nicole", "Nicole", "Nicole", "Sam", "Ann","Ann", "Ann", "Ann", "Eva", "Eva"};
-        String[] editions = {"BOOK_1", "BOOK_4", "ARTICLE_2", "JOURNAL_1", "NEWSPAPER_3", "BOOK_1",
-                "ARTICLE_1", "NEWSPAPER_3", "JOURNAL_1", "BOOK_1", "JOURNAL_2", "NEWSPAPER_1", "BOOK_3",
-                "JOURNAL_1", "JOURNAL_4", "BOOK_1", "ARTICLE_2", "BOOK_4", "JOURNAL_2"};
+        String[] names = {"Nick", "Bob", "John", "Jake", "Nicole", "Sam", "Ann", "Eva"};
+        String[][] editions = {{"BOOK_1", "BOOK_4"},
+                {"ARTICLE_2", "JOURNAL_1", "NEWSPAPER_3", "BOOK_1"},
+                {"ARTICLE_1", "NEWSPAPER_3"},
+                {"JOURNAL_1"},
+                {"BOOK_1", "JOURNAL_2", "NEWSPAPER_1"},
+                {"BOOK_3"},
+                {"JOURNAL_1", "JOURNAL_4", "BOOK_1", "ARTICLE_2"},
+                {"BOOK_4", "JOURNAL_2"}};
+
         service.readingAll(names, editions);
 
         service.firstReport();
