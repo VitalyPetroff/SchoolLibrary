@@ -12,35 +12,24 @@ public class LibraryService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LibraryService.class);
     private Library library = new Library();
 
-    public void addAllEditions(ArrayList<Edition> editions) {
-        library.listOfEditions = editions;
-    }
-
     public void addEdition(Edition edition) {
         library.listOfEditions.add(edition);
     }
 
-    public void addAllPupils(ArrayList<Pupil> pupils) {
-        library.listOfPupils = pupils;
+    public void addAllEditions(ArrayList<Edition> editions) {
+        for (Edition edition : editions) {
+            addEdition(edition);
+        }
+        library.listOfEditions = editions;
     }
 
     public void addPupil(Pupil pupil) {
         library.listOfPupils.add(pupil);
     }
 
-    public void readingOfEdition(String name, String title) {
-        Pupil pupil = findByName(name);
-        Edition edition = findByTitle(title);
-        pupil.readingOfEdition(edition);
-    }
-
-    public void readingAll(String[] names, String[][] editions) {
-        for (int i = 0; i < names.length; i++) {
-            for (int j = 0; j < editions[i].length; j++) {
-                if (!editions[i][j].isEmpty()) {
-                    readingOfEdition(names[i], editions[i][j]);
-                }
-            }
+    public void addAllPupils(ArrayList<Pupil> pupils) {
+        for (Pupil pupil : pupils) {
+            addPupil(pupil);
         }
     }
 
@@ -64,6 +53,22 @@ public class LibraryService {
         return result;
     }
 
+    public void readingOfEdition(String name, String title) {
+        Pupil pupil = findByName(name);
+        Edition edition = findByTitle(title);
+        pupil.readingOfEdition(edition);
+    }
+
+    public void readingAll(String[] names, String[][] editions) {
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < editions[i].length; j++) {
+                if (!editions[i][j].isEmpty()) {
+                    readingOfEdition(names[i], editions[i][j]);
+                }
+            }
+        }
+    }
+
     public void firstReport() {
         LOGGER.info("===FIRST REPORT. THE LIST OF AVAILABLE FOR READING===:");
         for (Edition edition : library.listOfEditions) {
@@ -71,7 +76,7 @@ public class LibraryService {
         }
     }
 
-    public void secondReport(){
+    public void secondReport() {
         PupilEditionsComparator comparator = new PupilEditionsComparator();
         library.listOfPupils.sort(comparator);
         Collections.reverse(library.listOfPupils);
@@ -83,7 +88,7 @@ public class LibraryService {
         }
     }
 
-    public void thirdReport(){
+    public void thirdReport() {
         Comparator<Pupil> comparator =
                 new PupilAgeComparator().thenComparing((new PupilEditionsComparator()).reversed());
         library.listOfPupils.sort(comparator);

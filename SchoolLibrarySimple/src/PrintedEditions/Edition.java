@@ -1,6 +1,6 @@
 package PrintedEditions;
 
-public class Edition{
+public abstract class Edition{
     private String title;
 
     Edition(String title) {
