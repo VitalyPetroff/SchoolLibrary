@@ -16,6 +16,7 @@ public class AppMain {
     public static void main(String[] args) {
         service.addAllEditions(addEditions());
         service.addAllPupils(addPupils());
+
         String[] names = {"Nick", "Bob", "John", "Jake", "Nicole", "Sam", "Ann", "Eva"};
         String[][] editions = {{"BOOK_1", "BOOK_4"},
                 {"ARTICLE_2", "JOURNAL_1", "NEWSPAPER_3", "BOOK_1"},
