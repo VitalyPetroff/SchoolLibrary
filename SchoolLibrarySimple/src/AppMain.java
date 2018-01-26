@@ -5,72 +5,60 @@ import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class AppMain {
+
+    private static LibraryService service = new LibraryService();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LibraryService.class);
 
     public static void main(String[] args) {
-        LibraryService service = new LibraryService();
-
-        addEditions(service);
-        addPupils(service);
-        reading(service);
+        service.addAllEditions(addEditions());
+        service.addAllPupils(addPupils());
+        String[] names = {"Nick", "Nick", "Bob", "Bob", "Bob", "Bob", "John", "John", "Jake",
+                "Nicole", "Nicole", "Nicole", "Sam", "Ann","Ann", "Ann", "Ann", "Eva", "Eva"};
+        String[] editions = {"BOOK_1", "BOOK_4", "ARTICLE_2", "JOURNAL_1", "NEWSPAPER_3", "BOOK_1",
+                "ARTICLE_1", "NEWSPAPER_3", "JOURNAL_1", "BOOK_1", "JOURNAL_2", "NEWSPAPER_1", "BOOK_3",
+                "JOURNAL_1", "JOURNAL_4", "BOOK_1", "ARTICLE_2", "BOOK_4", "JOURNAL_2"};
+        service.readingAll(names, editions);
 
         service.firstReport();
         service.secondReport();
         service.thirdReport();
     }
 
-    public static void addEditions(LibraryService service) {
+    public static ArrayList<Edition> addEditions() {
+        ArrayList<Edition> editions = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            service.addEdition(new Book("BOOK_" + 2 * i,
+            editions.add(new Book("BOOK_" + 2 * i,
                     "AUTHOR_" + 2 * i,
                     "PUBLISHING HOUSE_" + 2 * i));
-            service.addEdition(new Book("BOOK_" + (2 * i + 1),
+            editions.add(new Book("BOOK_" + (2 * i + 1),
                     "AUTHOR_" + (2 * i + 1),
                     "PUBLISHING HOUSE_" + (2 * i + 1)));
-            service.addEdition(new Journal("JOURNAL_" + i, (int) (Math.random() * 25 + 25)));
-            service.addEdition(new Article("ARTICLE_" + i, "AUTHOR_" + i, "TOPIC_" + i));
-            service.addEdition(new Newspaper("NEWSPAPER_" + i, (int) (Math.random() * 5 + 5)));
+            editions.add(new Journal("JOURNAL_" + i, (int) (Math.random() * 25 + 25)));
+            editions.add(new Article("ARTICLE_" + i, "AUTHOR_" + i, "TOPIC_" + i));
+            editions.add(new Newspaper("NEWSPAPER_" + i, (int) (Math.random() * 5 + 5)));
         }
+        return editions;
     }
 
-    public static void addPupils(LibraryService service) {
+    public static ArrayList<Pupil> addPupils() {
+        ArrayList<Pupil> pupils = new ArrayList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
         try {
-            service.addPupil(new Pupil("Nick", dateFormat.parse("2005")));
-            service.addPupil(new Pupil("Bob", dateFormat.parse("2005")));
-            service.addPupil(new Pupil("John", dateFormat.parse("2004")));
-            service.addPupil(new Pupil("Jake", dateFormat.parse("2005")));
-            service.addPupil(new Pupil("Nicole", dateFormat.parse("2003")));
-            service.addPupil(new Pupil("Sam", dateFormat.parse("2003")));
-            service.addPupil(new Pupil("Ann", dateFormat.parse("2006")));
-            service.addPupil(new Pupil("Eva", dateFormat.parse("2004")));
+            pupils.add(new Pupil("Nick", dateFormat.parse("2005")));
+            pupils.add(new Pupil("Bob", dateFormat.parse("2005")));
+            pupils.add(new Pupil("John", dateFormat.parse("2004")));
+            pupils.add(new Pupil("Jake", dateFormat.parse("2005")));
+            pupils.add(new Pupil("Nicole", dateFormat.parse("2003")));
+            pupils.add(new Pupil("Sam", dateFormat.parse("2003")));
+            pupils.add(new Pupil("Ann", dateFormat.parse("2006")));
+            pupils.add(new Pupil("Eva", dateFormat.parse("2004")));
         } catch (ParseException e) {
             LOGGER.error(e.getMessage(), e);
         }
-    }
-
-    public static void reading(LibraryService service){
-        service.readingOfEdition("Nick", "BOOK_1");
-        service.readingOfEdition("Nick", "BOOK_4");
-        service.readingOfEdition("Bob", "ARTICLE_2");
-        service.readingOfEdition("Bob", "JOURNAL_1");
-        service.readingOfEdition("Bob", "NEWSPAPER_3");
-        service.readingOfEdition("Bob", "BOOK_1");
-        service.readingOfEdition("John", "ARTICLE_1");
-        service.readingOfEdition("John", "NEWSPAPER_3");
-        service.readingOfEdition("Jake", "JOURNAL_1");
-        service.readingOfEdition("Nicole", "BOOK_1");
-        service.readingOfEdition("Nicole", "JOURNAL_2");
-        service.readingOfEdition("Nicole", "NEWSPAPER_1");
-        service.readingOfEdition("Sam", "BOOK_3");
-        service.readingOfEdition("Ann", "JOURNAL_1");
-        service.readingOfEdition("Ann", "JOURNAL_4");
-        service.readingOfEdition("Ann", "BOOK_1");
-        service.readingOfEdition("Ann", "ARTICLE_2");
-        service.readingOfEdition("Eva", "BOOK_4");
-        service.readingOfEdition("Eva", "JOURNAL_2");
+        return pupils;
     }
 }

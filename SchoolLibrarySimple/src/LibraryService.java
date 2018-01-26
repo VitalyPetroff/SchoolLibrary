@@ -3,6 +3,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -11,24 +12,32 @@ public class LibraryService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LibraryService.class);
     private Library library = new Library();
 
+    public void addAllEditions(ArrayList<Edition> editions) {
+        library.listOfEditions = editions;
+    }
+
     public void addEdition(Edition edition) {
         library.listOfEditions.add(edition);
+    }
+
+    public void addAllPupils(ArrayList<Pupil> pupils) {
+        library.listOfPupils = pupils;
     }
 
     public void addPupil(Pupil pupil) {
         library.listOfPupils.add(pupil);
     }
 
-    public void printPupils() {
-        for (Pupil pupil : library.listOfPupils) {
-            LOGGER.info(pupil.toString());
-        }
-    }
-
     public void readingOfEdition(String name, String title) {
         Pupil pupil = findByName(name);
         Edition edition = findByTitle(title);
         pupil.readingOfEdition(edition);
+    }
+
+    public void readingAll(String[] names, String[] editions) {
+        for (int index = 0; index < names.length; index++) {
+            readingOfEdition(names[index], editions[index]);
+        }
     }
 
     public Edition findByTitle(String title) {
@@ -74,7 +83,6 @@ public class LibraryService {
         Comparator<Pupil> comparator = new PupilAgeComparator().thenComparing(new PupilEditionsComparatorInverse());
         library.listOfPupils.sort(comparator);
         Collections.reverse(library.listOfPupils);
-        printPupils();
         LOGGER.info("===THIRD REPORT. PUPILS WHO HAVE READ LESS THAN OR EQUAL TO 2 BOOKS===");
         String result;
         for (Pupil pupil : library.listOfPupils) {
