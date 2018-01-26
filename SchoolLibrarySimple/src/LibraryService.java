@@ -80,7 +80,8 @@ public class LibraryService {
     }
 
     public void thirdReport(){
-        Comparator<Pupil> comparator = new PupilAgeComparator().thenComparing(new PupilEditionsComparatorInverse());
+        Comparator<Pupil> comparator =
+                new PupilAgeComparator().thenComparing((new PupilEditionsComparator()).reversed());
         library.listOfPupils.sort(comparator);
         Collections.reverse(library.listOfPupils);
         LOGGER.info("===THIRD REPORT. PUPILS WHO HAVE READ LESS THAN OR EQUAL TO 2 BOOKS===");
